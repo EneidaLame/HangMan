@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Hangman</title>
+</head>
+<body>
+ <h1>Hangman</h1>
+<script>
+
+
+        var words = [
+            "windows",
+            "ground",
+            "method",
+            "books",
+            "music"
+    ];
+    //pick random
+    var word  = words [Math.floor(Math.random() * words.length)];
+
+    //the word length
+    var answerArray = [];
+
+    for(var i = 0; i < word.length; i ++); {
+        answerArray[i] = " ";
+    }
+
+    var remainingLetters = word.length;
+
+     while (remainingLetters > 0 ) {
+         alert(answerArray.join(" "));
+
+         var guess = prompt("Guess the letter or click cancel to exit.");
+
+         if(guess == null) {
+             break;
+         }
+         else if (guess.length !== 1) {
+             alert("Please choose a letter.");
+
+         }
+         else {
+             for(var j =0; j < word.length; j++) {
+                 if(word[j] === guess) {
+                     answerArray[j] = guess;
+                     remainingLetters--;
+                 }
+             }
+         }
+     }
+
+     alert(answerArray.join(" "));
+
+     alert("That was Correct! The answer was " + word);
+
+</script>
+</body>
+</html>
